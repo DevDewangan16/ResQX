@@ -10,5 +10,5 @@ fun ResQXApp(
     resQXViewModel: ResQXViewModel= viewModel(),
     navHostController: NavHostController= rememberNavController())
 {
-
+    LoginScreen(resQXViewModel = resQXViewModel)
 }
