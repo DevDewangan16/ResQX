@@ -48,7 +48,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel){
             )
             ){
             Text(
-                text = "Welcome to ResQX",
+                text = "Welcome to ResQX !",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp, top = 20.dp),
