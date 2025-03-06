@@ -23,10 +23,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.resqx.R
 
 @Composable
-fun LoginScreen(resQXViewModel: ResQXViewModel){
+fun LoginScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostController){
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -75,6 +76,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel){
                 contentAlignment = Alignment.Center){
                 Button(
                     onClick = {
+                        navHostController.navigate(ResQXAppScreen.SignUp.name)
                     },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black
