@@ -41,6 +41,9 @@ import com.example.resqx.R
 @Composable
 fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostController){
     val name by resQXViewModel.name.collectAsState()
+    val email by resQXViewModel.email.collectAsState()
+    val password by resQXViewModel.password.collectAsState()
+    val confirmPass by resQXViewModel.confirmPass.collectAsState()
     Column(
         modifier= Modifier
             .fillMaxSize()
@@ -50,7 +53,9 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,){
         Image(painter = painterResource(id = R.drawable.signup), contentDescription =" SignUp Image",
-            modifier = Modifier.fillMaxWidth().height(200.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
             contentScale = ContentScale.FillWidth)
         Card (
             modifier = Modifier.fillMaxSize(),
@@ -112,9 +117,9 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                 )
             )
             OutlinedTextField(
-                value = name,
+                value = email,
                 onValueChange = {
-                    resQXViewModel.setName(it)
+                    resQXViewModel.setEmail(it)
                 },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text
@@ -139,9 +144,9 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                 )
             )
             OutlinedTextField(
-                value = name,
+                value = password,
                 onValueChange = {
-                    resQXViewModel.setName(it)
+                    resQXViewModel.setPassword(it)
                 },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text
@@ -166,9 +171,9 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                 )
             )
             OutlinedTextField(
-                value = name,
+                value = confirmPass,
                 onValueChange = {
-                    resQXViewModel.setName(it)
+                    resQXViewModel.setConfirmPass(it)
                 },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text
@@ -192,7 +197,9 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                     focusedLabelColor = Color.Black
                 )
             )
-            Column(modifier = Modifier.fillMaxSize().padding(10.dp),
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp),
                 verticalArrangement = Arrangement.spacedBy(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
