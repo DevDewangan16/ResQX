@@ -76,7 +76,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostControl
                 contentAlignment = Alignment.Center){
                 Button(
                     onClick = {
-                        navHostController.navigate(ResQXAppScreen.SignUp.name)
+                        navHostController.navigate(ResQXAppScreen.SignIn.name)
                     },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black

@@ -230,6 +230,7 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                         color = Color.Black,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable {
+                            navHostController.navigate(ResQXAppScreen.SignIn.name)
                         }
                     )
                 }

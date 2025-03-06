@@ -25,5 +25,8 @@ fun ResQXApp(
         composable(route = ResQXAppScreen.SignUp.name){
             SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
         }
+        composable(route = ResQXAppScreen.SignIn.name){
+            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
     }
 }
