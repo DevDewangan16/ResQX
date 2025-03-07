@@ -148,7 +148,9 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                 verticalArrangement = Arrangement.spacedBy(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navHostController.navigate(ResQXAppScreen.Home.name)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black
                     ),

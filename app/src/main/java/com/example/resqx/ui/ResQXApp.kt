@@ -10,24 +10,26 @@ import androidx.navigation.compose.rememberNavController
 enum class ResQXAppScreen(){
     Login,
     SignIn,
-    SignUp
+    SignUp,
+    Home
 }
 @Composable
 fun ResQXApp(
     resQXViewModel: ResQXViewModel = viewModel(),
     navHostController: NavHostController= rememberNavController())
 {
-    HomeScreen()
-//    LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-//    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
-//        composable(route = ResQXAppScreen.Login.name){
-//            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-//        }
-//        composable(route = ResQXAppScreen.SignUp.name){
-//            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-//        }
-//        composable(route = ResQXAppScreen.SignIn.name){
-//            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-//        }
-//    }
+    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
+        composable(route = ResQXAppScreen.Login.name){
+            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
+        }
+        composable(route = ResQXAppScreen.SignUp.name){
+            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
+        composable(route = ResQXAppScreen.SignIn.name){
+            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
+        composable(route =ResQXAppScreen.Home.name){
+            HomeScreen()
+        }
+    }
 }
