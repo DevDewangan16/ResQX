@@ -100,6 +100,311 @@ fun HomeScreen(){
                 }
             }
         }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.b),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83D\uDD22 Vehicle Info Lookup",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Retrieve essential details about a registered vehicle using its number.",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
 
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.c),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83C\uDD98 QR Code Display",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "View, download, and share your unique vehicle QR code for quick roadside assistance.",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.d),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83D\uDCF8 QR Code Scanner",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Scan a vehicle's QR code to access emergency contact and medical details instantly.\n" +
+                                    "\n",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.e),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83E\uDD16 Safety Chatbot",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Get real-time answers to vehicle safety rules and emergency procedures.\n" +
+                                    "\n",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.f),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83D\uDCDC History Log",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Track all your past queries and AI-generated responses for future reference.\n" +
+                                    "\n",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.g),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83D\uDCCC Saved Records",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Store and access previously generated responses for quick retrieval anytime.\n" +
+                                    "\n",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.h),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="⚙\uFE0F Settings",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Manage preferences, security options, and notification settings.\n" +
+                                    "\n",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
     }
 }
