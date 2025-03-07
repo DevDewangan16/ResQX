@@ -1,8 +1,5 @@
-package com.example.resqx.ui.theme
+package com.example.resqx.ui
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -39,7 +35,7 @@ import androidx.navigation.NavHostController
 import com.example.resqx.R
 
 @Composable
-fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostController){
+fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostController){
     val name by resQXViewModel.name.collectAsState()
     val email by resQXViewModel.email.collectAsState()
     val password by resQXViewModel.password.collectAsState()

@@ -1,4 +1,4 @@
-package com.example.resqx.ui.theme
+package com.example.resqx.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,7 +37,7 @@ import androidx.navigation.NavHostController
 import com.example.resqx.R
 
 @Composable
-fun SignInScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostController){
+fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostController){
     val name by resQXViewModel.name.collectAsState()
     val email by resQXViewModel.email.collectAsState()
     val password by resQXViewModel.password.collectAsState()

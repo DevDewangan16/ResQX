@@ -1,4 +1,4 @@
-package com.example.resqx.ui.theme
+package com.example.resqx.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,7 +27,7 @@ import androidx.navigation.NavHostController
 import com.example.resqx.R
 
 @Composable
-fun LoginScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostController){
+fun LoginScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostController){
     Column (
         modifier = Modifier
             .fillMaxSize()

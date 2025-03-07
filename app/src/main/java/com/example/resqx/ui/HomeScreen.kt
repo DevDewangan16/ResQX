@@ -1,0 +1,105 @@
+package com.example.resqx.ui
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.resqx.R
+
+@Composable
+fun HomeScreen(){
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(300.dp),
+        contentPadding = PaddingValues(vertical = 30.dp),
+
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+        horizontalArrangement =Arrangement.spacedBy(5.dp),) {
+        item {
+            Text(
+                text = "Welcome to ResQX",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                fontSize = 30.sp,
+                color = Color.Black,
+                textAlign = TextAlign.Center
+            )
+        }
+        item {
+            Text(
+                text = "Your Smart Vehicle Safety Companion!",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                fontSize = 16.sp,
+                color = Color.Black,
+                textAlign = TextAlign.Center
+            )
+        }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEEDEF6)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.a),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
+                            text="\uD83D\uDE97 Vehicle Registration",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
+                            text = "Easily register your vehicle and add emergency contacts for instant accessibility.",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
+
+    }
+}

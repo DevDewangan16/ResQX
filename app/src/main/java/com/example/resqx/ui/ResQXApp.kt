@@ -1,4 +1,4 @@
-package com.example.resqx.ui.theme
+package com.example.resqx.ui
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -14,11 +14,11 @@ enum class ResQXAppScreen(){
 }
 @Composable
 fun ResQXApp(
-    resQXViewModel: ResQXViewModel= viewModel(),
+    resQXViewModel: ResQXViewModel = viewModel(),
     navHostController: NavHostController= rememberNavController())
 {
     LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-    NavHost(navController = navHostController, startDestination =ResQXAppScreen.Login.name ) {
+    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
         composable(route = ResQXAppScreen.Login.name){
             LoginScreen(resQXViewModel = resQXViewModel,navHostController)
         }

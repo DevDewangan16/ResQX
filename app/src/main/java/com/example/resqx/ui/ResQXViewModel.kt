@@ -1,4 +1,4 @@
-package com.example.resqx.ui.theme
+package com.example.resqx.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
