@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "407158671767",
+    "project_id": "resqx-fd6b4",
+    "storage_bucket": "resqx-fd6b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407158671767:android:001129ed173472d7349cd2",
+        "android_client_info": {
+          "package_name": "com.example.resqx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc_OtWvoko-oawXfiqjndUdouDxFDO5YM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
