@@ -152,7 +152,7 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContro
                     keyboardType = KeyboardType.Text
                 ) ,
                 label = {
-                    Text(text = "Passwprd")
+                    Text(text = "Password")
                 },
                 placeholder = {
                     Text(text = "Create Password")
