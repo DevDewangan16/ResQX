@@ -1,6 +1,7 @@
 package com.example.resqx.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,6 +33,7 @@ fun HomeScreen(){
     LazyVerticalGrid(
         columns = GridCells.Adaptive(300.dp),
         contentPadding = PaddingValues(vertical = 30.dp),
+        modifier = Modifier.background(color = Color(0xFF504B38)),
 
         verticalArrangement = Arrangement.spacedBy(5.dp),
         horizontalArrangement =Arrangement.spacedBy(5.dp),) {
@@ -42,7 +44,7 @@ fun HomeScreen(){
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp),
                 fontSize = 30.sp,
-                color = Color.Black,
+                color = Color.White,
                 textAlign = TextAlign.Center
             )
         }
@@ -53,7 +55,7 @@ fun HomeScreen(){
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp),
                 fontSize = 16.sp,
-                color = Color.Black,
+                color = Color.White,
                 textAlign = TextAlign.Center
             )
         }
@@ -65,7 +67,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -108,7 +110,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -151,7 +153,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -194,7 +196,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -238,7 +240,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -282,7 +284,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -326,7 +328,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
@@ -370,7 +372,7 @@ fun HomeScreen(){
                     .clickable {
                     },
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEEDEF6)
+                    containerColor = Color(0xFFEBE5C2)
                 )
             ) {
                 Box(modifier = Modifier.fillMaxSize(),
