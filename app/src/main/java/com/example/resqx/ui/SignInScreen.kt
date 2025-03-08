@@ -74,7 +74,7 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp, top = 20.dp),
                 fontSize = 25.sp,
-                color=androidx.compose.ui.graphics.Color.Black,
+                color= Color.Black,
                 fontWeight = FontWeight.Bold)
             Text(
                 text = "Sign In to Stay Connected",
@@ -82,7 +82,7 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 20.sp,
-                color = androidx.compose.ui.graphics.Color.Black,
+                color = Color.Black,
                 fontWeight = FontWeight.SemiBold
             )
             Text(text = "Access your account securely and get quick assistance whenever you need it",
@@ -90,7 +90,7 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 15.sp,
-                color = androidx.compose.ui.graphics.Color.Black
+                color = Color.Black
             )
             OutlinedTextField(
                 value = email,
@@ -155,7 +155,7 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                 Button(
                     onClick = {
                         auth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener() { task ->
+                            .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     navHostController.navigate(ResQXAppScreen.Home.name){
                                         popUpTo(ResQXAppScreen.SignIn.name) {

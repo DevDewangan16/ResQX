@@ -54,7 +54,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContro
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp, top = 20.dp),
                 fontSize = 30.sp,
-                color=androidx.compose.ui.graphics.Color.Black,
+                color=Color.Black,
                 fontWeight = FontWeight.Bold)
             Text(
                 text = "Instant Help, Anytime & Anywhere",
@@ -62,7 +62,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContro
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 20.sp,
-                color = androidx.compose.ui.graphics.Color.Black,
+                color = Color.Black,
                 fontWeight = FontWeight.SemiBold
             )
             Text(text = "Ensure your safety on the road with quick access to emergency contacts, medical information, and real-time assistance—just by scanning a QR code. Stay prepared for any situation!",
@@ -70,7 +70,7 @@ fun LoginScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContro
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 15.sp,
-                color = androidx.compose.ui.graphics.Color.Black
+                color = Color.Black
                 )
             Box (modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center){

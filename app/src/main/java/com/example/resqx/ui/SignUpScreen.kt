@@ -72,7 +72,7 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp, top = 20.dp),
                 fontSize = 25.sp,
-                color=androidx.compose.ui.graphics.Color.Black,
+                color=Color.Black,
                 fontWeight = FontWeight.Bold)
             Text(
                 text = "Join ResQX for a Safer Journey",
@@ -80,7 +80,7 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 20.sp,
-                color = androidx.compose.ui.graphics.Color.Black,
+                color = Color.Black,
                 fontWeight = FontWeight.SemiBold
             )
             Text(text = "Sign up to access smart emergency assistance, secure your details, and stay connected when it matters most.",
@@ -88,7 +88,7 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp, bottom = 10.dp),
                 fontSize = 15.sp,
-                color = androidx.compose.ui.graphics.Color.Black
+                color = Color.Black
             )
             OutlinedTextField(
                 value = name,

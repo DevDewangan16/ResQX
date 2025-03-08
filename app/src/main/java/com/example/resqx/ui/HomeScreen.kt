@@ -84,14 +84,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="\uD83D\uDE97 Vehicle Registration",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Easily register your vehicle and add emergency contacts for instant accessibility.",
                             fontSize = 15.sp,
                             color = Color.Black,
@@ -134,7 +132,6 @@ fun HomeScreen(){
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Retrieve essential details about a registered vehicle using its number.",
                             fontSize = 15.sp,
                             color = Color.Black,
@@ -177,7 +174,6 @@ fun HomeScreen(){
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "View, download, and share your unique vehicle QR code for quick roadside assistance.",
                             fontSize = 15.sp,
                             color = Color.Black,
@@ -213,14 +209,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="\uD83D\uDCF8 QR Code Scanner",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Scan a vehicle's QR code to access emergency contact and medical details instantly.\n" +
                                     "\n",
                             fontSize = 15.sp,
@@ -257,14 +251,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="\uD83E\uDD16 Safety Chatbot",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Get real-time answers to vehicle safety rules and emergency procedures.\n" +
                                     "\n",
                             fontSize = 15.sp,
@@ -301,14 +293,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="\uD83D\uDCDC History Log",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Track all your past queries and AI-generated responses for future reference.\n" +
                                     "\n",
                             fontSize = 15.sp,
@@ -345,14 +335,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="\uD83D\uDCCC Saved Records",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Store and access previously generated responses for quick retrieval anytime.\n" +
                                     "\n",
                             fontSize = 15.sp,
@@ -389,14 +377,12 @@ fun HomeScreen(){
                             contentScale = ContentScale.FillBounds
                         )
                         Text(
-//                            text = "\uD83D\uDCC4 Summarize Documents & Notes",
                             text="⚙\uFE0F Settings",
                             fontSize = 18.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            //text = "Upload PDFs, text, or handwritten notes to generate concise summaries.",
                             text = "Manage preferences, security options, and notification settings.\n" +
                                     "\n",
                             fontSize = 15.sp,
