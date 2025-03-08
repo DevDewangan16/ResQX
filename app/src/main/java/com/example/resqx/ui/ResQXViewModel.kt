@@ -2,7 +2,10 @@ package com.example.resqx.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.MutableStateFlow
+
 
 class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _name=MutableStateFlow<String>("")
@@ -16,6 +19,13 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     private val _confirmPass=MutableStateFlow<String>("")
     val confirmPass:MutableStateFlow<String>get() = _confirmPass
+
+    private val _user=MutableStateFlow<FirebaseUser?>(null)
+    val user:MutableStateFlow<FirebaseUser?>get() = _user
+
+    fun setUser(user: FirebaseUser){
+        _user.value=user
+    }
 
     fun setName(name:String){
         _name.value=name

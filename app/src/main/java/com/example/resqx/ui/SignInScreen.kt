@@ -1,5 +1,8 @@
 package com.example.resqx.ui
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -38,6 +42,7 @@ import com.example.resqx.R
 
 @Composable
 fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostController){
+    val baseContext= LocalContext.current
     val name by resQXViewModel.name.collectAsState()
     val email by resQXViewModel.email.collectAsState()
     val password by resQXViewModel.password.collectAsState()
@@ -149,7 +154,26 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
                     onClick = {
-                        navHostController.navigate(ResQXAppScreen.Home.name)
+//                        auth.signInWithEmailAndPassword(email, password)
+//                            .addOnCompleteListener() { task ->
+//                                if (task.isSuccessful) {
+//                                    navHostController.navigate(ResQXAppScreen.Home.name){
+//                                        popUpTo(ResQXAppScreen.SignIn.name) {
+//                                            inclusive = true
+//                                        }
+//                                    }
+//                                    val user=task.result?.user
+//                                    user?.let { resQXViewModel.setUser(user) }
+//                                } else {
+//                                    // If sign in fails, display a message to the user.
+//                                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+//                                    Toast.makeText(
+//                                        baseContext,
+//                                        "Authentication failed.",
+//                                        Toast.LENGTH_SHORT,
+//                                    ).show()
+//                                }
+//                            }
                     },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black

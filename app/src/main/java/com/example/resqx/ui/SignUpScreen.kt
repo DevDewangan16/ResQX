@@ -1,5 +1,8 @@
 package com.example.resqx.ui
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -36,6 +40,7 @@ import com.example.resqx.R
 
 @Composable
 fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostController){
+    val baseContext= LocalContext.current
     val name by resQXViewModel.name.collectAsState()
     val email by resQXViewModel.email.collectAsState()
     val password by resQXViewModel.password.collectAsState()
@@ -199,7 +204,24 @@ fun SignUpScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                 verticalArrangement = Arrangement.spacedBy(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        auth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener() { task ->
+                                if (task.isSuccessful) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    navHostController.navigate(ResQXAppScreen.Home.name)
+
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                    Toast.makeText(
+                                        baseContext,
+                                        "Authentication failed.",
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                                }
+                            }
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black
                     ),

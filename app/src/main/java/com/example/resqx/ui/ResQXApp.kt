@@ -1,11 +1,14 @@
 package com.example.resqx.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 
 enum class ResQXAppScreen(){
     Login,
@@ -13,11 +16,17 @@ enum class ResQXAppScreen(){
     SignUp,
     Home
 }
+
+val auth= FirebaseAuth.getInstance()
+
 @Composable
 fun ResQXApp(
     resQXViewModel: ResQXViewModel = viewModel(),
     navHostController: NavHostController= rememberNavController())
 {
+    val user by resQXViewModel.user.collectAsState()
+    auth.currentUser?.let { resQXViewModel.setUser(it) }
+
     NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
         composable(route = ResQXAppScreen.Login.name){
             LoginScreen(resQXViewModel = resQXViewModel,navHostController)
