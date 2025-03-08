@@ -154,26 +154,26 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
                     onClick = {
-//                        auth.signInWithEmailAndPassword(email, password)
-//                            .addOnCompleteListener() { task ->
-//                                if (task.isSuccessful) {
-//                                    navHostController.navigate(ResQXAppScreen.Home.name){
-//                                        popUpTo(ResQXAppScreen.SignIn.name) {
-//                                            inclusive = true
-//                                        }
-//                                    }
-//                                    val user=task.result?.user
-//                                    user?.let { resQXViewModel.setUser(user) }
-//                                } else {
-//                                    // If sign in fails, display a message to the user.
-//                                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-//                                    Toast.makeText(
-//                                        baseContext,
-//                                        "Authentication failed.",
-//                                        Toast.LENGTH_SHORT,
-//                                    ).show()
-//                                }
-//                            }
+                        auth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener() { task ->
+                                if (task.isSuccessful) {
+                                    navHostController.navigate(ResQXAppScreen.Home.name){
+                                        popUpTo(ResQXAppScreen.SignIn.name) {
+                                            inclusive = true
+                                        }
+                                    }
+                                    val user=task.result?.user
+                                    user?.let { resQXViewModel.setUser(user) }
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                                    Toast.makeText(
+                                        baseContext,
+                                        "Authentication failed.",
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                                }
+                            }
                     },
                     colors = ButtonDefaults.buttonColors(
                         Color.Black
