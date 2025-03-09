@@ -34,19 +34,20 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         modifier = Modifier
             .fillMaxSize()
             .background(
-                color = Color(0xFFDDEEDD)
+                color = Color.White
             )
     ) {
         val vehicleNo by resQXViewModel.vehicleNo.collectAsState()
         Spacer(modifier = Modifier
             .fillMaxWidth()
-            .height(30.dp))
+            .height(35.dp))
         Text(
             text = " Register Your Vehicle for Emergency Assistance",
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 10.dp, end = 10.dp),
             fontSize = 20.sp,
+            color = Color.Black,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center)
         Text(text = "Add your vehicle details and emergency contacts for instant assistance.",
@@ -54,7 +55,8 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
                 .fillMaxWidth()
                 .padding(start = 10.dp, end = 10.dp),
             fontSize = 16.sp,
-            textAlign = TextAlign.Center)
+            textAlign = TextAlign.Center,
+            color = Color.Black)
         OutlinedTextField(
             value = vehicleNo,
             onValueChange = {

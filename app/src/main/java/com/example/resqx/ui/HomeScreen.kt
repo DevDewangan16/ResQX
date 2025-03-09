@@ -46,7 +46,8 @@ fun HomeScreen(navHostController: NavHostController){
                     .padding(start = 10.dp, end = 10.dp),
                 fontSize = 30.sp,
                 color = Color.White,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold
             )
         }
         item {
