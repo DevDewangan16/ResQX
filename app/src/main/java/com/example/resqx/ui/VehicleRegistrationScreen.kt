@@ -278,6 +278,5 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
             )) {
             Text(text = "Register Vehicle")
         }
-
     }
 }
