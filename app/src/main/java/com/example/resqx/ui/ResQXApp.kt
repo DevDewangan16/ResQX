@@ -29,24 +29,25 @@ fun ResQXApp(
     val user by resQXViewModel.user.collectAsState()
     auth.currentUser?.let { resQXViewModel.setUser(it) }
 
-    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
-        composable(route = ResQXAppScreen.Login.name){
-            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-        }
-        composable(route = ResQXAppScreen.SignUp.name){
-            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.SignIn.name){
-            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-        }
-        composable(route =ResQXAppScreen.Home.name){
-            HomeScreen(navHostController)
-        }
-        composable(route = ResQXAppScreen.VehicleRegis1.name){
-            VehicleRegistration(navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.VehicleRegis2.name){
-            VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
-        }
-    }
+    VehicleInfo(navHostController = navHostController)
+//    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
+//        composable(route = ResQXAppScreen.Login.name){
+//            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
+//        }
+//        composable(route = ResQXAppScreen.SignUp.name){
+//            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+//        }
+//        composable(route = ResQXAppScreen.SignIn.name){
+//            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+//        }
+//        composable(route =ResQXAppScreen.Home.name){
+//            HomeScreen(navHostController)
+//        }
+//        composable(route = ResQXAppScreen.VehicleRegis1.name){
+//            VehicleRegistration(navHostController = navHostController)
+//        }
+//        composable(route = ResQXAppScreen.VehicleRegis2.name){
+//            VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
+//        }
+//    }
 }
