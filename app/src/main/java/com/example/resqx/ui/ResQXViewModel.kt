@@ -23,6 +23,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _user=MutableStateFlow<FirebaseUser?>(null)
     val user:MutableStateFlow<FirebaseUser?>get() = _user
 
+    private val _vehicleNo=MutableStateFlow<String>("")
+    val vehicleNo:MutableStateFlow<String>get() = _vehicleNo
+
     fun setUser(user: FirebaseUser){
         _user.value=user
     }
@@ -41,5 +44,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     fun setConfirmPass(confirm:String){
         _confirmPass.value=confirm
+    }
+
+    fun setVehicleNo(vehicleNumber:String){
+        _vehicleNo.value=vehicleNumber
     }
 }
