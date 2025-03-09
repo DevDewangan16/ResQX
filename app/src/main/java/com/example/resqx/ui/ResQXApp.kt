@@ -16,7 +16,9 @@ enum class ResQXAppScreen(){
     SignUp,
     Home,
     VehicleRegis1,
-    VehicleRegis2
+    VehicleRegis2,
+    VehicleInfo1,
+    VehicleInfo2
 }
 
 val auth= FirebaseAuth.getInstance()
@@ -29,25 +31,27 @@ fun ResQXApp(
     val user by resQXViewModel.user.collectAsState()
     auth.currentUser?.let { resQXViewModel.setUser(it) }
 
-    VehicleInfo(navHostController = navHostController)
-//    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
-//        composable(route = ResQXAppScreen.Login.name){
-//            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-//        }
-//        composable(route = ResQXAppScreen.SignUp.name){
-//            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-//        }
-//        composable(route = ResQXAppScreen.SignIn.name){
-//            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-//        }
-//        composable(route =ResQXAppScreen.Home.name){
-//            HomeScreen(navHostController)
-//        }
-//        composable(route = ResQXAppScreen.VehicleRegis1.name){
-//            VehicleRegistration(navHostController = navHostController)
-//        }
-//        composable(route = ResQXAppScreen.VehicleRegis2.name){
-//            VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
-//        }
-//    }
+    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
+        composable(route = ResQXAppScreen.Login.name){
+            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
+        }
+        composable(route = ResQXAppScreen.SignUp.name){
+            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
+        composable(route = ResQXAppScreen.SignIn.name){
+            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
+        composable(route =ResQXAppScreen.Home.name){
+            HomeScreen(navHostController)
+        }
+        composable(route = ResQXAppScreen.VehicleRegis1.name){
+            VehicleRegistration(navHostController = navHostController)
+        }
+        composable(route = ResQXAppScreen.VehicleRegis2.name){
+            VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
+        }
+        composable(route = ResQXAppScreen.VehicleInfo1.name){
+            VehicleInfo(navHostController = navHostController)
+        }
+    }
 }
