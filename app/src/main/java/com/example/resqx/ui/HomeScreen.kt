@@ -35,7 +35,6 @@ fun HomeScreen(navHostController: NavHostController){
         columns = GridCells.Adaptive(300.dp),
         contentPadding = PaddingValues(vertical = 30.dp),
         modifier = Modifier.background(color = Color(0xFF504B38)),
-
         verticalArrangement = Arrangement.spacedBy(5.dp),
         horizontalArrangement =Arrangement.spacedBy(5.dp),) {
         item {

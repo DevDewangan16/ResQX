@@ -26,6 +26,24 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _vehicleNo=MutableStateFlow<String>("")
     val vehicleNo:MutableStateFlow<String>get() = _vehicleNo
 
+    private val _ownerName=MutableStateFlow<String>("")
+    val ownerName:MutableStateFlow<String>get() = _ownerName
+
+    private val _contact1=MutableStateFlow<String>("")
+    val contact1:MutableStateFlow<String>get() = _contact1
+
+    private val _contact2=MutableStateFlow<String>("")
+    val contact2:MutableStateFlow<String>get() = _contact2
+
+    private val _bloodGroup=MutableStateFlow<String>("")
+    val bloodGroup:MutableStateFlow<String>get() = _bloodGroup
+
+    private val _allergies=MutableStateFlow<String>("")
+    val allergies:MutableStateFlow<String>get() = _allergies
+
+    private val _chronicCondition=MutableStateFlow<String>("")
+    val chronicCondition:MutableStateFlow<String>get() = _chronicCondition
+
     fun setUser(user: FirebaseUser){
         _user.value=user
     }
@@ -48,5 +66,29 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     fun setVehicleNo(vehicleNumber:String){
         _vehicleNo.value=vehicleNumber
+    }
+
+    fun setOwnerName(ownerName:String){
+        _ownerName.value=ownerName
+    }
+
+    fun setContact1(contact1:String){
+        _contact1.value=contact1
+    }
+
+    fun setContact2(contact2:String){
+        _contact2.value=contact2
+    }
+
+    fun setBloodGroup(bloodGroup:String){
+        _bloodGroup.value=bloodGroup
+    }
+
+    fun setAllergies(allergies:String){
+        _allergies.value=allergies
+    }
+
+    fun setChronicCondition(chronic:String){
+        _chronicCondition.value=chronic
     }
 }

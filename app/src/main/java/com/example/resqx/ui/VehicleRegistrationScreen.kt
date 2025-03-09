@@ -38,6 +38,13 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
             )
     ) {
         val vehicleNo by resQXViewModel.vehicleNo.collectAsState()
+        val ownerName by resQXViewModel.ownerName.collectAsState()
+        val contact1 by resQXViewModel.contact1.collectAsState()
+        val contact2 by resQXViewModel.contact2.collectAsState()
+        val bloodGroup by resQXViewModel.bloodGroup.collectAsState()
+        val allergies by resQXViewModel.allergies.collectAsState()
+        val chronicCondition  by resQXViewModel.chronicCondition.collectAsState()
+
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .height(35.dp))
@@ -89,9 +96,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = ownerName,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setOwnerName(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -100,7 +107,7 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
                 Text(text = "Owner Name")
             },
             placeholder = {
-                Text(text = " Provide the vehicle owner’s name")
+                Text(text = "Provide the vehicle owner’s name")
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -120,9 +127,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = contact1,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setContact1(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -151,9 +158,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = contact2,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setContact2(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -182,9 +189,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = bloodGroup,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setBloodGroup(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -213,9 +220,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = allergies,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setAllergies(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -244,9 +251,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
         )
 
         OutlinedTextField(
-            value = vehicleNo,
+            value = chronicCondition,
             onValueChange = {
-                resQXViewModel.setVehicleNo(it)
+                resQXViewModel.setChronicCondition(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
