@@ -2,9 +2,14 @@ package com.example.resqx.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.example.resqx.ui.data.DataBase
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.database
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 
 class ResQXViewModel(application:Application):AndroidViewModel(application){
@@ -46,6 +51,13 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     private val _vehicleInfo=MutableStateFlow<String>("")
     val vehicleInfo:MutableStateFlow<String>get() = _vehicleInfo
+
+    private val _databaseList=MutableStateFlow<List<DataBase>>(emptyList())
+    val databaseList: StateFlow<List<DataBase>>
+        get() = _databaseList.asStateFlow()
+
+    val database= Firebase.database
+    val myRef = database.getReference("users/${auth.currentUser?.uid}/Vehicle")
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -97,5 +109,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     fun setVehicleInfo(VehicleNumber:String){
         _vehicleInfo.value=VehicleNumber
+    }
+
+    fun addToDatabase(item:DataBase){
+        myRef.push().setValue(item)
     }
 }

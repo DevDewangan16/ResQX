@@ -25,6 +25,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.resqx.ui.data.DataBase
 
 @Composable
 fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
@@ -281,7 +282,9 @@ fun VehicleRegistrationScreen(resQXViewModel: ResQXViewModel){
             )
         )
 
-        Button(onClick = {},
+        Button(onClick = {
+            resQXViewModel.addToDatabase(DataBase(vehicleNo,ownerName,contact1,contact2,bloodGroup,allergies, chronicCondition))
+        },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
             )) {

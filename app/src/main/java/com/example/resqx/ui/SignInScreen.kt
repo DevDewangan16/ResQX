@@ -131,7 +131,7 @@ fun SignInScreen(resQXViewModel: ResQXViewModel, navHostController: NavHostContr
                     Text(text = "Password")
                 },
                 placeholder = {
-                    Text(text = "Create Password")
+                    Text(text = "Enter Password")
                 },
                 modifier = Modifier
                     .fillMaxWidth()
