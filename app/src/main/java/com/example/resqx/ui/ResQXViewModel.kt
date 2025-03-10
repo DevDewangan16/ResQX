@@ -44,6 +44,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _chronicCondition=MutableStateFlow<String>("")
     val chronicCondition:MutableStateFlow<String>get() = _chronicCondition
 
+    private val _vehicleInfo=MutableStateFlow<String>("")
+    val vehicleInfo:MutableStateFlow<String>get() = _vehicleInfo
+
     fun setUser(user: FirebaseUser){
         _user.value=user
     }
@@ -90,5 +93,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     fun setChronicCondition(chronic:String){
         _chronicCondition.value=chronic
+    }
+
+    fun setVehicleInfo(VehicleNumber:String){
+        _vehicleInfo.value=VehicleNumber
     }
 }
