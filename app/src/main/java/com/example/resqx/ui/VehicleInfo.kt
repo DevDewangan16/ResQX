@@ -111,6 +111,7 @@ fun VehicleInfo(navHostController: NavHostController){
         )
 
         Button(onClick = {
+            navHostController.navigate(ResQXAppScreen.VehicleInfo2.name)
         },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
