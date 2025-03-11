@@ -74,5 +74,8 @@ fun ResQXApp(
         composable(route = ResQXAppScreen.QRScanner1.name){
             QRScanner(navHostController = navHostController)
         }
+        composable(route = ResQXAppScreen.QRDisplay1.name){
+            QRDisplay()
+        }
     }
 }
