@@ -3,6 +3,8 @@ package com.example.resqx.ui
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.resqx.ui.data.DataBase
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseUser
@@ -52,8 +54,6 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _chronicCondition=MutableStateFlow<String>("")
     val chronicCondition:MutableStateFlow<String>get() = _chronicCondition
 
-    private val _vehicleInfo=MutableStateFlow<String>("")
-    val vehicleInfo:MutableStateFlow<String>get() = _vehicleInfo
 
     private val _databaseList=MutableStateFlow<List<DataBase>>(emptyList())
     val databaseList: StateFlow<List<DataBase>>
@@ -110,11 +110,37 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
         _chronicCondition.value=chronic
     }
 
-    fun setVehicleInfo(VehicleNumber:String){
-        _vehicleInfo.value=VehicleNumber
-    }
-
     fun addToDatabase(item:DataBase){
         myRef.push().setValue(item)
+    }
+    private val _vehicleInfo = MutableStateFlow<String>("")
+    val vehicleInfo: MutableStateFlow<String> get() = _vehicleInfo
+
+    private val _vehicleDetails = MutableStateFlow<DataBase?>(null)
+    val vehicleDetails: MutableStateFlow<DataBase?> get() = _vehicleDetails
+
+    fun setVehicleInfo(info: String) {
+        _vehicleInfo.value = info
+    }
+
+    fun fetchVehicleDetails(vehicleNo: String) {
+        myRef.orderByChild("vehicleNo").equalTo(vehicleNo).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
+                        val vehicleDetails = snapshot.getValue(DataBase::class.java)
+                        _vehicleDetails.value = vehicleDetails
+                        return
+                    }
+                } else {
+                    _vehicleDetails.value = null
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle possible errors.
+                _vehicleDetails.value = null
+            }
+        })
     }
 }

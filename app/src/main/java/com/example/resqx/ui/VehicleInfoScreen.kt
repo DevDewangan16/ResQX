@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase
 @Composable
 fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
     val vehicleInfo by resQXViewModel.vehicleInfo.collectAsState()
+    val vehicleDetails by resQXViewModel.vehicleDetails.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -75,9 +76,6 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
             label = {
                 Text(text = "Vehicle Number")
             },
-//            placeholder = {
-//                Text(text = "Enter your registered vehicle number")
-//            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 10.dp, end = 10.dp, bottom = 5.dp),
@@ -91,11 +89,11 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
                 focusedLabelColor = Color.Black,
                 focusedContainerColor = Color.White,
                 unfocusedContainerColor = Color.White
-
             )
         )
 
         Button(onClick = {
+            resQXViewModel.fetchVehicleDetails(vehicleInfo)
         },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
@@ -103,6 +101,23 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
             Text(text = "Search")
         }
 
-
+        vehicleDetails?.let { details ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text(text = "Owner Name: ${details.ownerName}", color = Color.Black)
+                Text(text = "Contact 1: ${details.contact1}", color = Color.Black)
+                Text(text = "Contact 2: ${details.contact2}", color = Color.Black)
+                Text(text = "Blood Group: ${details.bloodGroup}", color = Color.Black)
+                Text(text = "Allergies: ${details.allergies}", color = Color.Black)
+                Text(text = "Chronic Condition: ${details.chronicCondition}", color = Color.Black)
+            }
+        } ?: run {
+            if (vehicleInfo.isNotEmpty()) {
+                Text(text = "No details found for the entered vehicle number.", color = Color.Red)
+            }
+        }
     }
 }
