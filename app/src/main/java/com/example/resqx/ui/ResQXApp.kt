@@ -20,7 +20,11 @@ enum class ResQXAppScreen(){
     VehicleRegis1,
     VehicleRegis2,
     VehicleInfo1,
-    VehicleInfo2
+    VehicleInfo2,
+    QRDisplay1,
+    QRDisplay2,
+    QRScanner1,
+    QRScanner2
 }
 
 val auth= FirebaseAuth.getInstance()
@@ -66,6 +70,9 @@ fun ResQXApp(
         }
         composable(route = ResQXAppScreen.VehicleInfo2.name){
             VehicleInfoScreen(resQXViewModel = resQXViewModel)
+        }
+        composable(route = ResQXAppScreen.QRScanner1.name){
+            QRScanner(navHostController = navHostController)
         }
     }
 }
