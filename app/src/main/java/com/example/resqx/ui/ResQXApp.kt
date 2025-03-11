@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.resqx.ui.data.DataBase
 import com.google.firebase.auth.FirebaseAuth
@@ -31,8 +32,17 @@ fun ResQXApp(
 {
     val user by resQXViewModel.user.collectAsState()
     auth.currentUser?.let { resQXViewModel.setUser(it) }
+    val backStackEntry by navHostController.currentBackStackEntryAsState()//used to control the back buttton navigation
+    val currentScreen =ResQXAppScreen.valueOf(
+        backStackEntry?.destination?.route?:ResQXAppScreen.Home.name
+    )
+    val startDestination = if (user == null) {
+        ResQXAppScreen.Login.name
+    } else {
+        ResQXAppScreen.Home.name
+    }
 
-    NavHost(navController = navHostController, startDestination = ResQXAppScreen.Login.name ) {
+    NavHost(navController = navHostController, startDestination = startDestination ) {
         composable(route = ResQXAppScreen.Login.name){
             LoginScreen(resQXViewModel = resQXViewModel,navHostController)
         }
