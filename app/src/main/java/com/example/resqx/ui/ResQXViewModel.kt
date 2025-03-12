@@ -10,6 +10,7 @@ import com.example.resqx.ui.data.Content
 import com.example.resqx.ui.data.DataBase
 import com.example.resqx.ui.data.GeminiRequest
 import com.example.resqx.ui.data.Part
+import com.example.resqx.ui.data.RequestResponse
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -69,6 +70,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     private val _response = MutableStateFlow("Ask something...")
     val response = _response.asStateFlow()
+
+    private val _historyList = MutableStateFlow<List<RequestResponse>>(emptyList())
+    val historyList: StateFlow<List<RequestResponse>> = _historyList
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -171,8 +175,8 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
                 _response.value = responseText
 
-//                val newEntry = RequestResponse(prompt,responseText)
-//                _historyList.value = _historyList.value + newEntry
+                val newEntry = RequestResponse(prompt,responseText)
+                _historyList.value = _historyList.value + newEntry
 
 
             } catch (e: Exception) {
