@@ -26,7 +26,8 @@ enum class ResQXAppScreen(){
     QRScanner1,
     QRScanner2,
     Chatbot,
-    History
+    History,
+    FAQs
 }
 
 val auth= FirebaseAuth.getInstance()
@@ -84,6 +85,9 @@ fun ResQXApp(
         }
         composable(route = ResQXAppScreen.History.name){
             HistoryScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+        }
+        composable(route = ResQXAppScreen.FAQs.name){
+            FAQsScreen()
         }
     }
 }
