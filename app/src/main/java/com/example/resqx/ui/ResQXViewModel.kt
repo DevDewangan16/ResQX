@@ -5,7 +5,11 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.resqx.ui.data.Content
 import com.example.resqx.ui.data.DataBase
+import com.example.resqx.ui.data.GeminiRequest
+import com.example.resqx.ui.data.Part
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -15,6 +19,7 @@ import com.google.firebase.database.database
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 
 class ResQXViewModel(application:Application):AndroidViewModel(application){
@@ -61,6 +66,9 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     val database= Firebase.database
     val myRef = database.getReference("users/${auth.currentUser?.uid}/Vehicle")
+
+    private val _response = MutableStateFlow("Ask something...")
+    val response = _response.asStateFlow()
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -142,5 +150,34 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
                 _vehicleDetails.value = null
             }
         })
+    }
+
+    private val apiKey = "AIzaSyDbGhLvg47UU1tY7O0LS7dbeho1dFEuvPk"
+
+    //used for fetching the response with the help of Gemini of the Text to Text based
+    fun fetchResponse(prompt: String) {
+        viewModelScope.launch {
+            try {
+                val request = GeminiRequest(
+                    contents = listOf(
+                        Content(parts = listOf(Part(text = prompt)))  // ✅ Correct format
+                    )
+                )
+
+                val result = RetrofitClient.instance.getGeminiResponse(apiKey, request)
+
+                // ✅ Correctly extracting response text
+                val responseText = result.candidates?.getOrNull(0)?.content?.parts?.getOrNull(0)?.text ?: "No response"
+
+                _response.value = responseText
+
+//                val newEntry = RequestResponse(prompt,responseText)
+//                _historyList.value = _historyList.value + newEntry
+
+
+            } catch (e: Exception) {
+                _response.value = "Error: ${e.message}"
+            }
+        }
     }
 }
