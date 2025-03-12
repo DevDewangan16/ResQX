@@ -1,5 +1,7 @@
 package com.example.resqx.ui
 
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,8 +31,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import io.noties.markwon.Markwon
 
 @Composable
 fun ChatbotScreen(resQXViewModel: ResQXViewModel){
@@ -56,10 +61,12 @@ fun ChatbotScreen(resQXViewModel: ResQXViewModel){
                 .padding(8.dp)) {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     item{
-                        Text(
-                            text = "Response: $response",
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
+//                        Text(
+//                            text = "Response: $response",
+//                            style = MaterialTheme.typography.bodyLarge,
+//                        )
+                        MarkdownText(response = response)//used for the beautification of the response
+
                         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                             Button(onClick = {},
                                 colors = ButtonDefaults.buttonColors(
@@ -101,4 +108,16 @@ fun ChatbotScreen(resQXViewModel: ResQXViewModel){
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
+}
+
+@Composable
+fun MarkdownText(response: String) {
+    val context = LocalContext.current
+    val markwon = remember { Markwon.create(context) }
+    val spanned = remember(response) { markwon.toMarkdown(response) }
+
+    AndroidView(
+        factory = { TextView(it).apply { movementMethod = LinkMovementMethod.getInstance() } },
+        update = { it.text = spanned }
+    )
 }
