@@ -401,5 +401,46 @@ fun HomeScreen(navHostController: NavHostController){
                 }
             }
         }
+        item {
+            Card(
+                modifier = Modifier
+                    .size(width = 300.dp, height = 300.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .clickable {
+                    },
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFFEBE5C2)
+                )
+            ) {
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.faqs),
+                            contentDescription = "",
+                            modifier = Modifier.size(150.dp),
+                            contentScale = ContentScale.FillBounds
+                        )
+                        Text(
+                            text="❓ FAQs",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = "Find quick solutions to your queries about ResQX, from QR code usage to security settings",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center
+                        )
+
+                    }
+                }
+            }
+        }
     }
 }
