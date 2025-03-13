@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.resqx.ui.data.SaveRecord
 import io.noties.markwon.Markwon
 
 @Composable
@@ -68,7 +69,14 @@ fun ChatbotScreen(resQXViewModel: ResQXViewModel){
                         MarkdownText(response = response)//used for the beautification of the response
 
                         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                            Button(onClick = {},
+                            Button(onClick = {
+                                resQXViewModel.addSavedDatabase(
+                                    SaveRecord(
+                                        userInput.toString(),
+                                        response
+                                    )
+                                )
+                            },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color(0xFF2F2F2F)
                                 )) {

@@ -11,6 +11,7 @@ import com.example.resqx.ui.data.DataBase
 import com.example.resqx.ui.data.GeminiRequest
 import com.example.resqx.ui.data.Part
 import com.example.resqx.ui.data.RequestResponse
+import com.example.resqx.ui.data.SaveRecord
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -67,12 +68,16 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     val database= Firebase.database
     val myRef = database.getReference("users/${auth.currentUser?.uid}/Vehicle")
+    val myRef2=database.getReference("users/${auth.currentUser?.uid}/SavedRecords")
 
     private val _response = MutableStateFlow("Ask something...")
     val response = _response.asStateFlow()
 
     private val _historyList = MutableStateFlow<List<RequestResponse>>(emptyList())
     val historyList: StateFlow<List<RequestResponse>> = _historyList
+
+    private val _saveRecord=MutableStateFlow<List<SaveRecord>>(emptyList())
+    val saveRecord:MutableStateFlow<List<SaveRecord>>get()=_saveRecord
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -125,6 +130,10 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     fun addToDatabase(item:DataBase){
         myRef.push().setValue(item)
     }
+    fun addSavedDatabase(item:SaveRecord){
+        myRef2.push().setValue(item)
+    }
+
     private val _vehicleInfo = MutableStateFlow<String>("")
     val vehicleInfo: MutableStateFlow<String> get() = _vehicleInfo
 
