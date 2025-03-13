@@ -38,6 +38,7 @@ fun ResQXApp(
     resQXViewModel: ResQXViewModel = viewModel(),
     navHostController: NavHostController= rememberNavController())
 {
+    val isvisible by resQXViewModel.isvisible.collectAsState()
     val user by resQXViewModel.user.collectAsState()
     auth.currentUser?.let { resQXViewModel.setUser(it) }
     val backStackEntry by navHostController.currentBackStackEntryAsState()//used to control the back buttton navigation
@@ -50,48 +51,53 @@ fun ResQXApp(
         ResQXAppScreen.Home.name
     }
 
-    NavHost(navController = navHostController, startDestination = startDestination ) {
-        composable(route = ResQXAppScreen.Login.name){
-            LoginScreen(resQXViewModel = resQXViewModel,navHostController)
-        }
-        composable(route = ResQXAppScreen.SignUp.name){
-            SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.SignIn.name){
-            SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-        }
-        composable(route =ResQXAppScreen.Home.name){
-            HomeScreen(navHostController)
-        }
-        composable(route = ResQXAppScreen.VehicleRegis1.name){
-            VehicleRegistration(navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.VehicleRegis2.name){
-            VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
-        }
-        composable(route = ResQXAppScreen.VehicleInfo1.name){
-            VehicleInfo(navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.VehicleInfo2.name){
-            VehicleInfoScreen(resQXViewModel = resQXViewModel)
-        }
-        composable(route = ResQXAppScreen.QRScanner1.name){
-            QRScanner(navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.QRDisplay1.name){
-            QRDisplay()
-        }
-        composable(route = ResQXAppScreen.Chatbot.name){
-            ChatbotScreen(resQXViewModel = resQXViewModel)
-        }
-        composable(route = ResQXAppScreen.History.name){
-            HistoryScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
-        }
-        composable(route = ResQXAppScreen.FAQs.name){
-            FAQsScreen()
-        }
-        composable(route = ResQXAppScreen.Save.name){
-            SaveScreen(resQXViewModel = resQXViewModel, navController = navHostController)
+    if (isvisible){
+        SplashScreen()
+    }
+    else{
+        NavHost(navController = navHostController, startDestination = startDestination ) {
+            composable(route = ResQXAppScreen.Login.name){
+                LoginScreen(resQXViewModel = resQXViewModel,navHostController)
+            }
+            composable(route = ResQXAppScreen.SignUp.name){
+                SignUpScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+            }
+            composable(route = ResQXAppScreen.SignIn.name){
+                SignInScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+            }
+            composable(route =ResQXAppScreen.Home.name){
+                HomeScreen(navHostController)
+            }
+            composable(route = ResQXAppScreen.VehicleRegis1.name){
+                VehicleRegistration(navHostController = navHostController)
+            }
+            composable(route = ResQXAppScreen.VehicleRegis2.name){
+                VehicleRegistrationScreen(resQXViewModel = resQXViewModel)
+            }
+            composable(route = ResQXAppScreen.VehicleInfo1.name){
+                VehicleInfo(navHostController = navHostController)
+            }
+            composable(route = ResQXAppScreen.VehicleInfo2.name){
+                VehicleInfoScreen(resQXViewModel = resQXViewModel)
+            }
+            composable(route = ResQXAppScreen.QRScanner1.name){
+                QRScanner(navHostController = navHostController)
+            }
+            composable(route = ResQXAppScreen.QRDisplay1.name){
+                QRDisplay()
+            }
+            composable(route = ResQXAppScreen.Chatbot.name){
+                ChatbotScreen(resQXViewModel = resQXViewModel)
+            }
+            composable(route = ResQXAppScreen.History.name){
+                HistoryScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+            }
+            composable(route = ResQXAppScreen.FAQs.name){
+                FAQsScreen()
+            }
+            composable(route = ResQXAppScreen.Save.name){
+                SaveScreen(resQXViewModel = resQXViewModel, navController = navHostController)
+            }
         }
     }
 }

@@ -23,7 +23,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,6 +36,9 @@ import kotlinx.serialization.json.Json
 
 
 class ResQXViewModel(application:Application):AndroidViewModel(application){
+    private val _isvisible=MutableStateFlow<Boolean>(true)
+    val isvisible:MutableStateFlow<Boolean>get() =_isvisible
+
     private val _name=MutableStateFlow<String>("")
     val name :MutableStateFlow<String>get() = _name
 
@@ -94,6 +99,10 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     lateinit var screenJob: Job
     lateinit var InternetJob: Job
+
+    fun toggleVisibility(){
+        _isvisible.value=false
+    }
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -290,6 +299,11 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     }
 
     init {
+        screenJob=viewModelScope.launch(Dispatchers.Default) {
+            delay(3000)
+            toggleVisibility()
+        }
+
         getSavedItems()
         fillCartItems()
     }
