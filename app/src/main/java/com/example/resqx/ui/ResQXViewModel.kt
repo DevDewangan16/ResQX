@@ -1,7 +1,12 @@
 package com.example.resqx.ui
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,10 +23,14 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 
 class ResQXViewModel(application:Application):AndroidViewModel(application){
@@ -77,7 +86,14 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     val historyList: StateFlow<List<RequestResponse>> = _historyList
 
     private val _saveRecord=MutableStateFlow<List<SaveRecord>>(emptyList())
-    val saveRecord:MutableStateFlow<List<SaveRecord>>get()=_saveRecord
+    val saveRecord:StateFlow<List<SaveRecord>>get()=_saveRecord.asStateFlow()
+
+    private val Context.datastore : DataStore<androidx.datastore.preferences.core.Preferences> by preferencesDataStore("SavedRecords")
+    private val cartItemsKey= stringPreferencesKey("SavedRecords_items")
+    private val context=application.applicationContext
+
+    lateinit var screenJob: Job
+    lateinit var InternetJob: Job
 
     fun setUser(user: FirebaseUser){
         _user.value=user
@@ -132,6 +148,85 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     }
     fun addSavedDatabase(item:SaveRecord){
         myRef2.push().setValue(item)
+    }
+
+    private suspend fun saveCartItemsToDataStore(){
+        context.datastore.edit { preferences->
+            preferences[cartItemsKey]= Json.encodeToString(_saveRecord.value)
+        }
+    }
+
+    private suspend fun loadCartItemsFromDataStore(){
+        val fullData=context.datastore.data.first()
+        val cartItemsJson=fullData[cartItemsKey]
+        if (!cartItemsJson.isNullOrEmpty()){
+            _saveRecord.value= Json.decodeFromString(cartItemsJson)
+        }
+    }
+
+    fun getSavedItems(){
+        InternetJob=viewModelScope.launch {
+            try {
+                loadCartItemsFromDataStore()
+            }catch (exception:Exception){
+//                toggleVisibility()
+//                screenJob.cancel()
+            }
+        }
+    }
+    fun addToCart(item:SaveRecord){
+        _saveRecord.value = _saveRecord.value + item
+        viewModelScope.launch {
+            saveCartItemsToDataStore()
+        }
+    }
+
+    fun fillCartItems(){
+        // Read from the database
+        myRef2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                _saveRecord.value= emptyList()
+                for (childSnapshot in dataSnapshot.children){
+                    val item=childSnapshot.getValue(SaveRecord::class.java)
+                    item?.let {
+//                        val newItem=it
+//                        addToCart(newItem)
+                        _saveRecord.value = _saveRecord.value + it
+
+                    }
+                }
+//                setLoading(false)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
+
+    fun removeFromCart(oldItem:SaveRecord){
+        /* _cartItems.value = _cartItems.value - item
+         viewModelScope.launch {
+             saveCartItemsToDataStore()
+         }*/ //this code is for to remove item from the cart only not database
+        myRef2.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //_databaseList.value= emptyList()
+                for (childSnapshot in dataSnapshot.children){
+                    var itemRemoved=false
+                    val item=childSnapshot.getValue(SaveRecord::class.java)
+                    item?.let {
+                        if (oldItem.request ==it.request && oldItem.response == it.response){
+                            childSnapshot.ref.removeValue()
+                            itemRemoved=true
+                        }
+                    }
+                    if(itemRemoved) break
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
     private val _vehicleInfo = MutableStateFlow<String>("")
@@ -192,5 +287,10 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
                 _response.value = "Error: ${e.message}"
             }
         }
+    }
+
+    init {
+        getSavedItems()
+        fillCartItems()
     }
 }
