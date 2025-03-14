@@ -100,6 +100,21 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     lateinit var screenJob: Job
     lateinit var InternetJob: Job
 
+    private val _logoutClicked=MutableStateFlow(false)
+    val logoutClicked: StateFlow<Boolean> get() = _logoutClicked.asStateFlow()
+
+    fun setLogoutStatus(logoutStatus:Boolean){
+        _logoutClicked.value=logoutStatus
+    }
+
+    fun clearData(){
+        _user.value=null
+        _name.value=""
+        _email.value=""
+        _password.value=""
+        _confirmPass.value=""
+    }
+
     fun toggleVisibility(){
         _isvisible.value=false
     }

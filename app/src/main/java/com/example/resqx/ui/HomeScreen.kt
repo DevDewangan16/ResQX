@@ -366,6 +366,7 @@ fun HomeScreen(navHostController: NavHostController){
                     .size(width = 300.dp, height = 300.dp)
                     .padding(start = 10.dp, end = 10.dp)
                     .clickable {
+                        navHostController.navigate(ResQXAppScreen.Settings.name)
                     },
                 colors = CardDefaults.cardColors(
                     containerColor = Color(0xFFEBE5C2)

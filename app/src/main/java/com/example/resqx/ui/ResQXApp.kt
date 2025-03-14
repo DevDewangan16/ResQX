@@ -1,8 +1,13 @@
 package com.example.resqx.ui
 
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -28,7 +33,8 @@ enum class ResQXAppScreen(){
     Chatbot,
     History,
     FAQs,
-    Save
+    Save,
+    Settings
 }
 
 val auth= FirebaseAuth.getInstance()
@@ -40,6 +46,9 @@ fun ResQXApp(
 {
     val isvisible by resQXViewModel.isvisible.collectAsState()
     val user by resQXViewModel.user.collectAsState()
+    val logoutClicked by resQXViewModel.logoutClicked.collectAsState()//used to manage the the manage the logout or alert screen
+
+    
     auth.currentUser?.let { resQXViewModel.setUser(it) }
     val backStackEntry by navHostController.currentBackStackEntryAsState()//used to control the back buttton navigation
     val currentScreen =ResQXAppScreen.valueOf(
@@ -98,6 +107,59 @@ fun ResQXApp(
             composable(route = ResQXAppScreen.Save.name){
                 SaveScreen(resQXViewModel = resQXViewModel, navController = navHostController)
             }
+            composable(route = ResQXAppScreen.Settings.name){
+                SettingScreen(resQXViewModel = resQXViewModel, navHostController = navHostController)
+            }
+        }
+        if (logoutClicked){
+            AlertCheck(onYesButtonPressed = {
+                auth.signOut()
+                resQXViewModel.clearData()
+                resQXViewModel.setLogoutStatus(false)
+                navHostController.navigate(ResQXAppScreen.Login.name) {
+                    popUpTo(ResQXAppScreen.Login.name) {
+                        inclusive = true
+                    }
+                }
+            },
+                onNoButtonPressed = {
+                    resQXViewModel.setLogoutStatus(false)
+                }
+            )
         }
     }
+}
+
+@Composable
+fun AlertCheck(
+    onYesButtonPressed:()->Unit,
+    onNoButtonPressed:()->Unit
+
+){
+    AlertDialog(
+        title = {
+            Text(text = "Logout?", fontWeight = FontWeight.Bold)
+        },
+        containerColor = Color.White,
+        text = {
+            Text(text = "Are you sure you want to Logout")
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                onYesButtonPressed()
+            }) {
+                Text(text = "Yes")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = {
+                onNoButtonPressed()
+            }) {
+                Text(text = "No")
+            }
+        },
+        onDismissRequest = {
+            onNoButtonPressed()
+        }
+    )
 }
