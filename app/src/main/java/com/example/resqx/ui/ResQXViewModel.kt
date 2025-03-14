@@ -81,7 +81,7 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
         get() = _databaseList.asStateFlow()
 
     val database= Firebase.database
-    val myRef = database.getReference("users/${auth.currentUser?.uid}/Vehicle")
+    val myRef = database.getReference("/Vehicle")
     val myRef2=database.getReference("users/${auth.currentUser?.uid}/SavedRecords")
 
     private val _response = MutableStateFlow("Ask something...")
