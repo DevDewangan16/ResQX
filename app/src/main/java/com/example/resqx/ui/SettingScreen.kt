@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,7 +35,7 @@ fun SettingScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContr
                     resQXViewModel.setLogoutStatus(true)//getting the alert check which is the prompt screen for the logout option
                 },
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFFBAE75)
+                containerColor = Color.Black
             )
         ) {
             Box(
@@ -44,7 +45,9 @@ fun SettingScreen(resQXViewModel: ResQXViewModel,navHostController: NavHostContr
                 Text(
                     text = "Logout",
                     textAlign = TextAlign.Center,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }

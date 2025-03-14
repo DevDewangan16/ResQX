@@ -1,5 +1,6 @@
 package com.example.resqx.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,10 +11,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,7 +34,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "How do I register my vehicle?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -48,7 +56,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "How do I scan a QR code?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -65,7 +78,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "What happens when someone scans my QR code?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -82,7 +100,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Where should I place my QR code on my vehicle?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -99,7 +122,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Can I update my vehicle details after registration?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -116,7 +144,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Is my data secure?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -133,7 +166,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Who can access my information when scanning the QR code?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -150,7 +188,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Can I directly call emergency contacts from the app?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -167,7 +210,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Can I add multiple vehicles under one account?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -184,7 +232,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "My QR code is not scanning. What should I do?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -201,7 +254,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "How can I contact support?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -218,7 +276,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "Can I share my vehicle details with someone?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
@@ -235,7 +298,12 @@ fun FAQsScreen(){
         }
         item {
             Column {
-                Card(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp)) {
+                Card(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFFF8F3D9)
+                    )) {
                     Text(text = "How can I reset my password?",
                         modifier = androidx.compose.ui.Modifier
                             .fillMaxWidth()
