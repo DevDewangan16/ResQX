@@ -109,7 +109,9 @@ fun QRScanner(navHostController: NavHostController){
             textAlign = TextAlign.Center
         )
 
-        Button(onClick = {},
+        Button(onClick = {
+            navHostController.navigate(ResQXAppScreen.QRScanner2.name)
+        },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
             )) {

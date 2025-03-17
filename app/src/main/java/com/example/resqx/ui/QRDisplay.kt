@@ -113,7 +113,7 @@ fun QRDisplay(navHostController: NavHostController){
             colors = ButtonDefaults.buttonColors(
                 Color.Black
             )) {
-            Text(text = "Continue to Scanner")
+            Text(text = "Continue to Display")
         }
     }
 }
