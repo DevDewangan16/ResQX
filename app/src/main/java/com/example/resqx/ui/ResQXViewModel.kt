@@ -11,6 +11,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.resqx.BuildConfig
 import com.example.resqx.ui.data.Content
 import com.example.resqx.ui.data.DataBase
 import com.example.resqx.ui.data.GeminiRequest
@@ -284,7 +285,7 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
         })
     }
 
-    private val apiKey = "AIzaSyDbGhLvg47UU1tY7O0LS7dbeho1dFEuvPk"
+    private val apiKey = BuildConfig.GEMINI_API_KEY
 
     //used for fetching the response with the help of Gemini of the Text to Text based
     fun fetchResponse(prompt: String) {
