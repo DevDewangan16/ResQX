@@ -93,7 +93,10 @@ fun ResQXApp(
                 QRScanner(navHostController = navHostController)
             }
             composable(route = ResQXAppScreen.QRDisplay1.name){
-                QRDisplay()
+                QRDisplay(navHostController)
+            }
+            composable(route = ResQXAppScreen.QRDisplay2.name){
+                QRCodeGeneratorScreen()
             }
             composable(route = ResQXAppScreen.Chatbot.name){
                 ChatbotScreen(resQXViewModel = resQXViewModel)

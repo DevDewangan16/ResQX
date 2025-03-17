@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
@@ -25,7 +26,7 @@ import coil.decode.ImageDecoderDecoder
 import com.example.resqx.R
 
 @Composable
-fun QRDisplay(){
+fun QRDisplay(navHostController: NavHostController){
     val imageLoader = ImageLoader.Builder(LocalContext.current)
         .components {
             if (SDK_INT >= 28) {
@@ -106,7 +107,9 @@ fun QRDisplay(){
             textAlign = TextAlign.Center
         )
 
-        Button(onClick = {},
+        Button(onClick = {
+            navHostController.navigate(ResQXAppScreen.QRDisplay2.name)
+        },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
             )) {

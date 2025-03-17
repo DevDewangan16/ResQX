@@ -92,5 +92,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.1") // For Image Loading
     implementation("com.google.android.gms:play-services-basement:18.5.0")
 
-    implementation("io.noties.markwon:core:4.6.2")
+    implementation("io.noties.markwon:core:4.6.2")//for beautification of the text
+
+    implementation("com.google.zxing:core:3.4.1")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }
