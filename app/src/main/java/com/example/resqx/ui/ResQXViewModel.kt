@@ -255,11 +255,18 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
     private val _vehicleInfo = MutableStateFlow<String>("")
     val vehicleInfo: MutableStateFlow<String> get() = _vehicleInfo
 
+    private val _vehicleDisplay = MutableStateFlow<String>("")
+    val vehicleDisplay: MutableStateFlow<String> get() = _vehicleDisplay
+
     private val _vehicleDetails = MutableStateFlow<DataBase?>(null)
     val vehicleDetails: MutableStateFlow<DataBase?> get() = _vehicleDetails
 
     fun setVehicleInfo(info: String) {
         _vehicleInfo.value = info
+    }
+
+    fun setVehicleDisplay(info: String) {
+        _vehicleDisplay.value = info
     }
 
     fun fetchVehicleDetails(vehicleNo: String) {

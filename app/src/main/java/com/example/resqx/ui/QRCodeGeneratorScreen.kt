@@ -25,7 +25,7 @@ import com.google.zxing.qrcode.QRCodeWriter
 fun QRCodeGeneratorScreen(resQXViewModel: ResQXViewModel) {
     var qrCodeBitmap by remember { mutableStateOf<Bitmap?>(null) }
 
-    val vehicleInfo by resQXViewModel.vehicleInfo.collectAsState()
+    val vehicleDisplay by resQXViewModel.vehicleDisplay.collectAsState()
     val vehicleDetails by resQXViewModel.vehicleDetails.collectAsState()
 
     Column(
@@ -36,9 +36,9 @@ fun QRCodeGeneratorScreen(resQXViewModel: ResQXViewModel) {
         verticalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
-            value = vehicleInfo,
+            value = vehicleDisplay,
             onValueChange = {
-                resQXViewModel.setVehicleInfo(it)
+                resQXViewModel.setVehicleDisplay(it)
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -63,7 +63,7 @@ fun QRCodeGeneratorScreen(resQXViewModel: ResQXViewModel) {
         )
 
         Button(onClick = {
-            resQXViewModel.fetchVehicleDetails(vehicleInfo)
+            resQXViewModel.fetchVehicleDetails(vehicleDisplay)
             vehicleDetails?.let { details ->
                 val dataBase = DataBase(
                 vehicleNo = details.vehicleNo,
