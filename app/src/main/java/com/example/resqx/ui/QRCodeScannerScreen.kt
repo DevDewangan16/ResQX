@@ -98,12 +98,12 @@ fun QRCodeScannerScreen() {
         // Display Scanned Result
         vehicleDetails?.let { details ->
             Column {
-                Text(text = "Owner Name: ${details.ownerName}", color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = "Contact 1: ${details.contact1}", color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = "Contact 2: ${details.contact2}", color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = "Blood Group: ${details.bloodGroup}", color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = "Allergies: ${details.allergies}", color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = "Chronic Condition: ${details.chronicCondition}", color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.ownerName, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.contact1, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.contact2, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.bloodGroup, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.allergies, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text = details.chronicCondition, color = androidx.compose.ui.graphics.Color.Black)
             }
         } ?: if (scannedResult != null) {
             Text(text = "Invalid QR code format", color = androidx.compose.ui.graphics.Color.Red)
@@ -194,13 +194,13 @@ private fun parseScannedResult(scannedResult: String?): DataBase? {
         val parts = result.split(",")
         if (parts.size == 7) { // Ensure there are exactly 7 parts
             DataBase(
-                /*vehicleNo = */parts[0],
-               /* ownerName = */parts[1],
-                /*contact1 = */parts[2],
-               /* contact2 = */parts[3],
-                /*bloodGroup = */parts[4],
-                /*allergies = */parts[5],
-                /*chronicCondition = */parts[6]
+                vehicleNo = parts[0],
+                ownerName = parts[1],
+                contact1 = parts[2],
+                contact2 = parts[3],
+                bloodGroup = parts[4],
+                allergies = parts[5],
+                chronicCondition = parts[6]
             )
         } else {
             null // Return null if the format is incorrect
