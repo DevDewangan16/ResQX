@@ -9,6 +9,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.resqx.BuildConfig
+import com.example.resqx.ui.data.ChatMessage
 import com.example.resqx.ui.data.Content
 import com.example.resqx.ui.data.DataBase
 import com.example.resqx.ui.data.GeminiRequest
@@ -284,32 +285,66 @@ class ResQXViewModel(application:Application):AndroidViewModel(application){
 
     private val apiKey = BuildConfig.GEMINI_API_KEY
 
-    //used for fetching the response with the help of Gemini of the Text to Text based
+    private val _chatHistory = MutableStateFlow<List<ChatMessage>>(emptyList())
+    val chatHistory = _chatHistory.asStateFlow()
+
     fun fetchResponse(prompt: String) {
         viewModelScope.launch {
             try {
+                // Add the user's question to the chat history
+                _chatHistory.value += ChatMessage(text = prompt, isQuestion = true)
+
                 val request = GeminiRequest(
                     contents = listOf(
-                        Content(parts = listOf(Part(text = prompt)))  // ✅ Correct format
+                        Content(parts = listOf(Part(text = prompt)))
                     )
                 )
 
                 val result = RetrofitClient.instance.getGeminiResponse(apiKey, request)
 
-                // ✅ Correctly extracting response text
+                // Extract the response text
                 val responseText = result.candidates?.getOrNull(0)?.content?.parts?.getOrNull(0)?.text ?: "No response"
 
-                _response.value = responseText
+                // Add the response to the chat history
+                _chatHistory.value += ChatMessage(text = responseText, isQuestion = false)
 
+                //add in the history screen
                 val newEntry = RequestResponse(prompt,responseText)
                 _historyList.value = _historyList.value + newEntry
 
-
             } catch (e: Exception) {
-                _response.value = "Error: ${e.message}"
+                // Add the error message to the chat history
+                _chatHistory.value += ChatMessage(text = "Error: ${e.message}", isQuestion = false)
             }
         }
     }
+
+    //used for fetching the response with the help of Gemini of the Text to Text based
+//    fun fetchResponse(prompt: String) {
+//        viewModelScope.launch {
+//            try {
+//                val request = GeminiRequest(
+//                    contents = listOf(
+//                        Content(parts = listOf(Part(text = prompt)))  // ✅ Correct format
+//                    )
+//                )
+//
+//                val result = RetrofitClient.instance.getGeminiResponse(apiKey, request)
+//
+//                // ✅ Correctly extracting response text
+//                val responseText = result.candidates?.getOrNull(0)?.content?.parts?.getOrNull(0)?.text ?: "No response"
+//
+//                _response.value = responseText
+//
+//                val newEntry = RequestResponse(prompt,responseText)
+//                _historyList.value = _historyList.value + newEntry
+//
+//
+//            } catch (e: Exception) {
+//                _response.value = "Error: ${e.message}"
+//            }
+//        }
+//    }
 
     init {
         screenJob=viewModelScope.launch(Dispatchers.Default) {
