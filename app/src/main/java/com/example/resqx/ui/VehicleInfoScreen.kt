@@ -1,5 +1,8 @@
 package com.example.resqx.ui
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -20,15 +24,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import com.google.firebase.database.FirebaseDatabase
 
 @Composable
 fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
+    val context = LocalContext.current
     val vehicleInfo by resQXViewModel.vehicleInfo.collectAsState()
     val vehicleDetails by resQXViewModel.vehicleDetails.collectAsState()
 
@@ -114,6 +121,21 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
                 Text(text = "Blood Group: ${details.bloodGroup}", color = Color.Black)
                 Text(text = "Allergies: ${details.allergies}", color = Color.Black)
                 Text(text = "Chronic Condition: ${details.chronicCondition}", color = Color.Black)
+                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact1)},
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFA7D477)
+                    )
+                ) {
+                    Text(text = "Call Contact 1",
+                        color = Color.Black)
+                }
+                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact2)},
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFA7D477)
+                    )) {
+                    Text(text = "Call Contact 2",
+                        color= Color.Black)
+                }
             }
         } ?: run {
             if (vehicleInfo.isNotEmpty()) {
@@ -121,4 +143,10 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
             }
         }
     }
+}
+fun makePhoneCall(context: Context, phoneNumber: String) {
+    val callIntent = Intent(Intent.ACTION_DIAL).apply {
+        data = Uri.parse("tel:$phoneNumber")
+    }
+    context.startActivity(callIntent)
 }
