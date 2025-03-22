@@ -94,23 +94,6 @@ fun QRCodeGeneratorScreen(resQXViewModel: ResQXViewModel) {
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        // Button to Generate QR Code
-//        Button(onClick = {
-//            val dataBase = DataBase(
-//                vehicleNo = "ABC123",
-//                ownerName = "John Doe",
-//                contact1 = "1234567890",
-//                contact2 = "0987654321",
-//                bloodGroup = "O+",
-//                allergies = "None",
-//                chronicCondition = "None"
-//            )
-//            val qrCodeText = dataBase.toString()
-//            qrCodeBitmap = generateQRCode(qrCodeText)
-//        }) {
-//            Text("Generate QR Code")
-//        }
     }
 }
 

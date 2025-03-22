@@ -94,6 +94,7 @@ fun VehicleInfoScreen(resQXViewModel: ResQXViewModel) {
 
         Button(onClick = {
             resQXViewModel.fetchVehicleDetails(vehicleInfo)
+            resQXViewModel.setVehicleInfo("")
         },
             colors = ButtonDefaults.buttonColors(
                 Color.Black
