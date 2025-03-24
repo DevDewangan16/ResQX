@@ -7,10 +7,12 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -104,6 +106,21 @@ fun QRCodeScannerScreen() {
                 Text(text = details.bloodGroup, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.allergies, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.chronicCondition, color = androidx.compose.ui.graphics.Color.Black)
+                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact1)},
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFA7D477)
+                    )
+                ) {
+                    Text(text = "Call Contact 1",
+                        color = Color.Black)
+                }
+                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact2)},
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFA7D477)
+                    )) {
+                    Text(text = "Call Contact 2",
+                        color= Color.Black)
+                }
             }
         } ?: if (scannedResult != null) {
             Text(text = "Invalid QR code format", color = androidx.compose.ui.graphics.Color.Red)
