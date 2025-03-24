@@ -1,7 +1,10 @@
 package com.example.resqx.ui
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -106,7 +109,7 @@ fun QRCodeScannerScreen() {
                 Text(text = details.bloodGroup, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.allergies, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.chronicCondition, color = androidx.compose.ui.graphics.Color.Black)
-                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact1)},
+                Button(onClick = { makePhoneCall1(context,phoneNumber = details.contact1)},
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFA7D477)
                     )
@@ -114,7 +117,7 @@ fun QRCodeScannerScreen() {
                     Text(text = "Call Contact 1",
                         color = Color.Black)
                 }
-                Button(onClick = { makePhoneCall(context,phoneNumber = details.contact2)},
+                Button(onClick = { makePhoneCall1(context,phoneNumber = details.contact2)},
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFFA7D477)
                     )) {
@@ -213,8 +216,8 @@ private fun parseScannedResult(scannedResult: String?): DataBase? {
             DataBase(
                 vehicleNo = parts[0],
                 ownerName = parts[1],
-                contact1 = parts[2],
-                contact2 = parts[3],
+                contact1 = extractPhoneNumber(parts[2]), // Process phone number
+                contact2 = extractPhoneNumber(parts[3]), // Process phone number
                 bloodGroup = parts[4],
                 allergies = parts[5],
                 chronicCondition = parts[6]
@@ -223,4 +226,34 @@ private fun parseScannedResult(scannedResult: String?): DataBase? {
             null // Return null if the format is incorrect
         }
     }
+}
+/**
+ * Extracts a valid phone number from a string (removes prefixes like "1" or "2").
+ */
+private fun extractPhoneNumber(rawNumber: String): String {
+    // Remove all non-digit characters first
+    val digitsOnly = rawNumber.replace("[^0-9]".toRegex(), "")
+
+    // If the number starts with "1" or "2" (incorrect prefix), remove it
+    return if (digitsOnly.startsWith("1") || digitsOnly.startsWith("2")) {
+        digitsOnly.substring(1)
+    } else {
+        digitsOnly
+    }
+}
+
+fun makePhoneCall1(context: Context, phoneNumber: String) {
+    val digitsOnly = phoneNumber.replace("[^0-9]".toRegex(), "")
+
+    // Example: If the number is 10 digits, assume it's Indian (+91)
+    val fullNumber = if (digitsOnly.length == 10) {
+        "+91$digitsOnly" // Add country code
+    } else {
+        digitsOnly
+    }
+
+    val callIntent = Intent(Intent.ACTION_DIAL).apply {
+        data = Uri.parse("tel:${Uri.encode(fullNumber)}")
+    }
+    context.startActivity(callIntent)
 }
