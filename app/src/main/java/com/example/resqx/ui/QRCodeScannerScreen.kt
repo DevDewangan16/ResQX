@@ -104,8 +104,8 @@ fun QRCodeScannerScreen() {
         vehicleDetails?.let { details ->
             Column {
                 Text(text = details.ownerName, color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = details.contact1, color = androidx.compose.ui.graphics.Color.Black)
-                Text(text = details.contact2, color = androidx.compose.ui.graphics.Color.Black)
+                Text(text =" contact1= ${details.contact1}", color = androidx.compose.ui.graphics.Color.Black)
+                Text(text =" contact2= ${details.contact2}", color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.bloodGroup, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.allergies, color = androidx.compose.ui.graphics.Color.Black)
                 Text(text = details.chronicCondition, color = androidx.compose.ui.graphics.Color.Black)
