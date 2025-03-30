@@ -74,7 +74,11 @@ fun QRCodeScannerScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Button to Start Scanning
-        Button(onClick = {
+        Button(
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            )
+            ,onClick = {
             // Check for camera permissions
             if (ContextCompat.checkSelfPermission(
                     context,
